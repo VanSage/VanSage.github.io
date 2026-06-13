@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Vanshika Certification</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* ── Certificate Grid ── */
+			.cert-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 2em;
+				margin-top: 2em;
+			}
+
+			.cert-card {
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.cert-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+			}
+
+			.cert-thumb {
+				width: 100%;
+				height: 180px;
+				object-fit: cover;
+				display: block;
+				cursor: pointer;
+				background: rgba(255,255,255,0.06);
+			}
+
+			.cert-thumb-placeholder {
+				width: 100%;
+				height: 180px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: rgba(255, 255, 255, 0.05);
+				cursor: pointer;
+				font-size: 3em;
+				color: rgba(255,255,255,0.2);
+			}
+
+			.cert-body {
+				padding: 1.2em 1.4em;
+			}
+
+			.cert-body h3 {
+				font-size: 1em;
+				margin: 0 0 0.3em 0;
+				color: #0b0b0b;
+				line-height: 1.4;
+			}
+
+			.cert-body .cert-issuer {
+				font-size: 0.85em;
+				color: #a0a0a0;
+				margin: 0 0 0.5em 0;
+			}
+
+			.cert-body .cert-skills {
+				font-size: 0.78em;
+				color: #888;
+				margin: 0 0 1em 0;
+				line-height: 1.5;
+			}
+
+			.cert-body .cert-view-btn {
+				display: inline-block;
+				font-size: 0.8em;
+				padding: 0.4em 1em;
+				border: 1px solid rgba(255,255,255,0.2);
+				border-radius: 4px;
+				color: #ccc;
+				cursor: pointer;
+				background: transparent;
+				transition: background 0.2s, color 0.2s;
+				text-decoration: none;
+			}
+
+			.cert-body .cert-view-btn:hover {
+				background: rgba(255,255,255,0.1);
+				color: #fff;
+			}
+
+			/* ── Category Label ── */
+			.cert-category {
+				margin: 2.5em 0 0.5em 0;
+				font-size: 0.75em;
+				text-transform: uppercase;
+				letter-spacing: 0.15em;
+				color: #888;
+				border-bottom: 1px solid rgba(255,255,255,0.08);
+				padding-bottom: 0.5em;
+			}
+
+			/* ── Lightbox Modal ── */
+			#cert-modal {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.88);
+				z-index: 9999;
+				align-items: center;
+				justify-content: center;
+				padding: 2em;
+			}
+
+			#cert-modal.active {
+				display: flex;
+			}
+
+			#cert-modal img {
+				max-width: 90vw;
+				max-height: 85vh;
+				border-radius: 6px;
+				box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+				object-fit: contain;
+			}
+
+			#cert-modal .modal-close {
+				position: fixed;
+				top: 1.2em;
+				right: 1.5em;
+				font-size: 2em;
+				color: #fff;
+				cursor: pointer;
+				line-height: 1;
+				background: none;
+				border: none;
+				opacity: 0.7;
+				transition: opacity 0.2s;
+			}
+
+			#cert-modal .modal-close:hover {
+				opacity: 1;
+			}
+
+			#cert-modal .modal-caption {
+				position: fixed;
+				bottom: 1.5em;
+				left: 0;
+				right: 0;
+				text-align: center;
+				color: #ccc;
+				font-size: 0.9em;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Lightbox Modal -->
+		<div id="cert-modal">
+			<button class="modal-close" onclick="closeModal()">&times;</button>
+			<img id="modal-img" src="" alt="" />
+			<div class="modal-caption" id="modal-caption"></div>
+		</div>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">Certificates</a>
+			</header>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Projects</a></li>
+					<li><a href="generic.html">Internship</a></li>
+					<li class="active"><a href="elements.html">Certificates</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/vanshika-150002326/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="https://github.com/VanSage" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<div id="main">
+				<section class="post">
+					<header class="major">
+						<h1>Certificates</h1>
+						<p>A collection of certifications and course completions that reflect my continuous learning journey across data analytics, web development, and professional skills.</p>
+					</header>
+
+					<!-- Category: Diploma -->
+					<p class="cert-category">🎓 Diploma</p>
+					<div class="cert-grid">
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/cert-dca.jpg', 'One Year Diploma in Computer Application (DCA)')">🏅</div>
+							<div class="cert-body">
+								<h3>One Year Diploma in Computer Application (DCA)</h3>
+								<p class="cert-issuer">Institute of Computer Education</p>
+								<p class="cert-skills">MS Office &amp; Advanced Excel &nbsp;·&nbsp; Web Development (HTML, CSS, JS, DHTML) &nbsp;·&nbsp; Photoshop &amp; CorelDraw &nbsp;·&nbsp; Tally</p>
+								<button class="cert-view-btn" onclick="openModal('images/cert-dca.jpg', 'One Year Diploma in Computer Application (DCA)')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Category: Data Analytics -->
+					<p class="cert-category">📊 Data Analytics</p>
+					<div class="cert-grid">
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/Deloitte.png', 'Data Analytics Job Simulation – Deloitte Australia')">🏅</div>
+							<div class="cert-body">
+								<h3>Data Analytics Job Simulation</h3>
+								<p class="cert-issuer">Deloitte Australia (Forage)</p>
+								<button class="cert-view-btn" onclick="openModal('images/Deloitte.png', 'Data Analytics Job Simulation – Deloitte Australia')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/SimplilearnExcel.png', 'Business Analytics with Excel – Simplilearn')">🏅</div>
+							<div class="cert-body">
+								<h3>Business Analytics with Excel</h3>
+								<p class="cert-issuer">Simplilearn</p>
+								<button class="cert-view-btn" onclick="openModal('images/SimplilearnExcel.png', 'Business Analytics with Excel – Simplilearn')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/SimplilearnSQL.png', 'Introduction to SQL – Simplilearn')">🏅</div>
+							<div class="cert-body">
+								<h3>Introduction to SQL</h3>
+								<p class="cert-issuer">Simplilearn</p>
+								<button class="cert-view-btn" onclick="openModal('images/SimplilearnSQL.png', 'Introduction to SQL – Simplilearn')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/DA Oneroadymap.png', 'Data Analyst Training – OneRoadmap')">🏅</div>
+							<div class="cert-body">
+								<h3>Data Analyst Training</h3>
+								<p class="cert-issuer">OneRoadmap</p>
+								<button class="cert-view-btn" onclick="openModal('images/DA Oneroadymap.png', 'Data Analyst Training – OneRoadmap')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Category: Programming -->
+					<p class="cert-category">💻 Programming</p>
+					<div class="cert-grid">
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/Python Infosys.png', 'Python for Data Science – Infosys Springboard')">🏅</div>
+							<div class="cert-body">
+								<h3>Python for Data Science</h3>
+								<p class="cert-issuer">Infosys Springboard</p>
+								<button class="cert-view-btn" onclick="openModal('images/Python Infosys.png', 'Python for Data Science – Infosys Springboard')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/PythonOR.png', 'Python Programming – OneRoadmap')">🏅</div>
+							<div class="cert-body">
+								<h3>Python Programming</h3>
+								<p class="cert-issuer">OneRoadmap</p>
+								<button class="cert-view-btn" onclick="openModal('images/PythonOR.png', 'Python Programming – OneRoadmap')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/WB Infosys.png', 'Hands-on Web Development with React – Infosys Springboard')">🏅</div>
+							<div class="cert-body">
+								<h3>Hands-on Web Development with React</h3>
+								<p class="cert-issuer">Infosys Springboard</p>
+								<button class="cert-view-btn" onclick="openModal('images/WB Infosys.png', 'Hands-on Web Development with React – Infosys Springboard')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Category: Professional Skills -->
+					<p class="cert-category">🤝 Professional Skills</p>
+					<div class="cert-grid">
+
+						<div class="cert-card">
+							<div class="cert-thumb-placeholder" onclick="openModal('images/Linkedin.png', 'Communication with Confidence – LinkedIn')">🏅</div>
+							<div class="cert-body">
+								<h3>Communication with Confidence</h3>
+								<p class="cert-issuer">LinkedIn Learning</p>
+								<button class="cert-view-btn" onclick="openModal('images/Linkedin.png', 'Communication with Confidence – LinkedIn')">🔍 View Certificate</button>
+							</div>
+						</div>
+
+					</div>
+
+				</section>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Haryana, India<br />
+						</p>
+					</section>
+					<section>
+						<h3>Phone</h3>
+						<p><a href="#">7027325425</a></p>
+					</section>
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">ranavanshika2372006@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/vanshika-150002326/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+							<li><a href="https://github.com/VanSage" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<!-- Space -->
+			<div id="#">
+				<ul><li>&copy; VANSHIKA</li><li>PORTFOLIO</li></ul>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script>
+			function openModal(src, caption) {
+				document.getElementById('modal-img').src = src;
+				document.getElementById('modal-caption').textContent = caption;
+				document.getElementById('cert-modal').classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeModal() {
+				document.getElementById('cert-modal').classList.remove('active');
+				document.getElementById('modal-img').src = '';
+				document.body.style.overflow = '';
+			}
+
+			// Close on clicking outside the image
+			document.getElementById('cert-modal').addEventListener('click', function(e) {
+				if (e.target === this) closeModal();
+			});
+
+			// Close on Escape key
+			document.addEventListener('keydown', function(e) {
+				if (e.key === 'Escape') closeModal();
+			});
+		</script>
+
+	</body>
+</html>
